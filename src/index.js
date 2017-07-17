@@ -5,12 +5,16 @@ import App from './App';
 import NumberList from './numbers';
 import Recipes from './recipes';
 import Comment from './Comment';
+import PouchDoc from './index-pouch';
+// import Untitled from './untitled';
+
 // import PouchDB from 'pouchdb';
 
 
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<Recipes />, document.getElementById('root4'));
+
 ReactDOM.render(<App />, document.getElementById('root2'));
 registerServiceWorker();
 
@@ -24,3 +28,6 @@ ReactDOM.render(
   document.getElementById('root3')
 );
 
+ReactDOM.render(<PouchDoc/>, document.getElementById('root5'));
+
+// ReactDOM.render(<Untitled/>, document.getElementById('root6'));
