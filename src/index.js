@@ -6,7 +6,7 @@ import Comment from './Comment';
 
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Comment />, document.getElementById('root1'));
+ReactDOM.render(<Comment name="Handsome" />, document.getElementById('root1'));
 
 ReactDOM.render(<App />, document.getElementById('root2'));
 registerServiceWorker();
