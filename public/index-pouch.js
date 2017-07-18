@@ -10,7 +10,7 @@ var doc = {
   ]
 };
 
-// Destroy the database before doing anything, because I want 
+// Destroy the database before doing anything, because I want
 // you to see the same thing if you reload.
 // Ignore the man behind the curtain!
 
@@ -23,7 +23,7 @@ new PouchDB('sample').destroy().then(function () {
   db.put(doc).then(function () {
     return db.get('mittens');
   }).then(function (doc) {
-    document.getElementById('display').innerHTML = 'We stored a kitten: ' + JSON.stringify(doc);
+    document.getElementById('root2').innerHTML = 'We stored a kitten: ' + JSON.stringify(doc);
   });
   //
   // IMPORTANT CODE ENDS HERE

@@ -1,33 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import NumberList from './numbers';
 import Recipes from './recipes';
-import Comment from './Comment';
-import PouchDoc from './index-pouch';
-// import Untitled from './untitled';
-
-// import PouchDB from 'pouchdb';
+import PouchDB from 'pouchdb';
 
 
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Recipes />, document.getElementById('root4'));
-
-ReactDOM.render(<App />, document.getElementById('root2'));
 registerServiceWorker();
 
 
-ReactDOM.render(<Comment name="Handsome" />, document.getElementById('root1'));
+ReactDOM.render(<App />, document.getElementById('root1'));
 
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root3')
-);
-
-ReactDOM.render(<PouchDoc/>, document.getElementById('root5'));
-
-// ReactDOM.render(<Untitled/>, document.getElementById('root6'));
+ReactDOM.render(<Recipes />, document.getElementById('root3'));
