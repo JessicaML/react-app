@@ -1,58 +1,23 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PouchDB from 'pouchdb';
 
-const { createClass, PropTypes } = React
-const { render } = ReactDOM
+var db = new PouchDB('sample');
 
-const PouchDoc = createClass({
-  displayName: "Recipes",
-  propTypes: {
-      _id: PropTypes.number,
-      name: PropTypes.string,
-      occupation: PropTypes.string,
-      seen: PropTypes.string,
+var doc = {
+  "_id": "mittens",
+  "name": "Mittens",
+  "occupation": "kitten",
+  "age": 3,
+  "hobbies": [
+    "playing with balls of yarn",
+    "chasing laser pointers",
+    "lookin' hella cute"
+  ]
+};
 
-  },
-
-  getDefaultProps() {
-      return {
-          "_id": 1,
-          "name": "Mittens",
-          "occupation": "kitten",
-          "seen": "no",
-      }
-  },
-
-  render() {
-      const {name, occupation} = this.props
-      return (
-          <div className="pouchDoc">
-              <p>
-                  <span>{name} name | </span>
-                  <span>{occupation} occupation</span>
-              </p>
-         </div>
-      )
-  }
-})
-
-new PouchDB('sample').destroy().then(function () {
-  return new PouchDB('sample');
-}).then(function (db) {
-
-  db.put(PouchDoc).then(function () {
-    return db.get('mittens');
-  }).then(function (PouchDoc) {
-    return 'We stored a kitten: ' + JSON.stringify(PouchDoc);
-  });
-
-});
+db.put(doc);
 
 
+// module.exports = {data: doc} 
 
-export default PouchDoc;
-
-
-
+export default doc;
 

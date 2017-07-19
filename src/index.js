@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Recipes from './recipes';
-import PouchDB from 'pouchdb';
-
-
+import doc from './index-pouch.js';
 import registerServiceWorker from './registerServiceWorker';
+
+
+console.log("doc");
+
+console.log(doc);
+
 
 registerServiceWorker();
 
@@ -14,3 +18,5 @@ registerServiceWorker();
 ReactDOM.render(<App />, document.getElementById('root1'));
 
 ReactDOM.render(<Recipes />, document.getElementById('root3'));
+
+// ReactDOM.render(<Json source={doc.occupation} />, document.getElementById('root4'));

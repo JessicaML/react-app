@@ -29,3 +29,4 @@ new PouchDB('sample').destroy().then(function () {
   // IMPORTANT CODE ENDS HERE
   //
 });
+
