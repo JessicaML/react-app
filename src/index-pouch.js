@@ -16,8 +16,5 @@ var doc = {
 
 db.put(doc);
 
-
-// module.exports = {data: doc} 
-
-export default doc;
+export default db;
 

@@ -3,14 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Recipes from './recipes';
-import doc from './index-pouch.js';
+import db from './index-pouch.js';
 import registerServiceWorker from './registerServiceWorker';
 
 
 console.log("doc");
 
-console.log(doc);
+console.log(db);
 
+db.get('mittens').then(function (doc) {
+  console.log(doc);
+}).catch(function (err) {
+  console.log(err);
+});
+
+console.log(db.name);
 
 registerServiceWorker();
 
