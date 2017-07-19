@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Recipes from './recipes';
+import Recipes from './render-pouch';
 import db from './index-pouch.js';
 import registerServiceWorker from './registerServiceWorker';
 
