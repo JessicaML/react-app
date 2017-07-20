@@ -7,17 +7,13 @@ import db from './index-pouch.js';
 import registerServiceWorker from './registerServiceWorker';
 
 
-console.log("doc");
+db.get('mittens2').then(function (doc) {
+  console.log("index.js"+doc);
 
-console.log(db);
-
-db.get('mittens').then(function (doc) {
-  console.log(doc);
 }).catch(function (err) {
   console.log(err);
 });
 
-console.log(db.name);
 
 registerServiceWorker();
 

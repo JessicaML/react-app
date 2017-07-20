@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 const { createClass, PropTypes } = React
 const { render } = ReactDOM
 
-const Recipes = createClass({
+const Recipes = createClass({git
   displayName: "Recipes",
   propTypes: {
       ingredients: PropTypes.number,
@@ -14,7 +14,7 @@ const Recipes = createClass({
 
   getDefaultProps() {
       return {
-          ingredients: 0,
+          ingredients: array[0].key,
           steps: 0,
           title: "[untitled recipe]"
       }

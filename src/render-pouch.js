@@ -6,64 +6,61 @@ import db from './index-pouch.js';
 const { createClass, PropTypes } = React
 const { render } = ReactDOM
 
-var notifs = db.get('mittens');
 
-db.get('mittens').then(function (doc) {
-  console.log(doc);
-  var notifs = doc;
+var notifs;
 
- console.log(notifs._id);
-  console.log(notifs.name);
-  console.log(notifs.occupation);
-  console.log(notifs.age);
+db.get('mittens1').then(function (doc) {
+     notifs = doc;
+      console.log(notifs)
+      return notifs;
 
-  return notifs;
+    });
 
-}).catch(function (err) {
-  console.log(err);
-});
+console.log(notifs)
 
-  console.log(notifs);
-
-  console.log("bdkshfbsdkjhfklsdj");
-
-  console.log(notifs._id);
-  console.log(notifs.name);
-  console.log(notifs.occupation);
-  console.log(notifs.age);
+var doc = {
+  "_id": "mittens2",
+  "name": "Mittens2",
+  "occupation": "kitten2",
+  "age": 32,
+};
 
 const Recipes = createClass({
   displayName: "Recipes",
   propTypes: {
-      _id: PropTypes.string,
-      name: PropTypes.string,
-      occupation: PropTypes.string,
-      age: PropTypes.number
+      ingredients: PropTypes.number,
+      steps: PropTypes.number,
+      title: PropTypes.string
   },
 
   getDefaultProps() {
       return {
-        _id: notifs._id,
-        name: notifs.name,
-        occupation: notifs.occupation,
-        age: notifs.age
+          ingredients: 0,
+          steps: 0,
+          title: "[untitled recipe]"
       }
   },
 
   render() {
-      const {age, name, occupation} = this.props
+      const {ingredients, steps, title} = this.props
       return (
           <div className="recipes">
-              <h1>{age}</h1>
+              <h1>{title}</h1>
               <p>
-                  <span>{name} name | </span>
-                  <span>{occupation} occupation</span>
+                  <span>{ingredients} Ingredients | </span>
+                  <span>{steps} Steps</span>
               </p>
          </div>
       )
   }
 })
 
+
+
+
+
+
 export default Recipes;
+
 
 
