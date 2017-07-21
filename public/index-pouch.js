@@ -14,19 +14,19 @@ var doc = {
 // you to see the same thing if you reload.
 // Ignore the man behind the curtain!
 
-new PouchDB('sample').destroy().then(function () {
-  return new PouchDB('sample');
-}).then(function (db) {
-  //
-  // IMPORTANT CODE STARTS HERE
-  //
-  db.put(doc).then(function () {
-    return db.get('mittens');
-  }).then(function (doc) {
-    document.getElementById('root2').innerHTML = 'We stored a kitten: ' + JSON.stringify(doc);
-  });
-  //
-  // IMPORTANT CODE ENDS HERE
-  //
-});
+// new PouchDB('sample').destroy().then(function () {
+//   return new PouchDB('sample');
+// }).then(function (db) {
+//   //
+//   // IMPORTANT CODE STARTS HERE
+//   //
+//   db.put(doc).then(function () {
+//     return db.get('mittens');
+//   }).then(function (doc) {
+//     document.getElementById('root2').innerHTML = 'We stored a kitten: ' + JSON.stringify(doc);
+//   });
+//   //
+//   // IMPORTANT CODE ENDS HERE
+//   //
+// });
 

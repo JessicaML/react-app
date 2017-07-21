@@ -1,39 +1,42 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import db from './index-pouch.js';
 
-const { createClass, PropTypes } = React
-const { render } = ReactDOM
+class Recipes extends Component {
+  constructor(props) {
+    super(props);
 
-const Recipes = createClass({git
-  displayName: "Recipes",
-  propTypes: {
-      ingredients: PropTypes.number,
-      steps: PropTypes.number,
-      title: PropTypes.string
-  },
-
-  getDefaultProps() {
-      return {
-          ingredients: array[0].key,
-          steps: 0,
-          title: "[untitled recipe]"
+    this.state = {
+      doc: {
+        _id: '',
+        name: '',
+        occupation: '',
+        age: null,
       }
-  },
+    };
+  }
+
+  componentDidMount() {
+    db.get('mittens1')
+      .then(doc => this.setState(() => ({ doc })))
+      .catch(err => console.log(err));
+  }
 
   render() {
-      const {ingredients, steps, title} = this.props
-      return (
-          <div className="recipes">
-              <h1>{title}</h1>
-              <p>
-                  <span>{ingredients} Ingredients | </span>
-                  <span>{steps} Steps</span>
-              </p>
-         </div>
-      )
+    const {_id, name, occupation, age} = this.state.doc;
+    return (
+      <div className="recipes">
+        <h1>id {_id}</h1>
+        <p>
+          <span>{name} name | </span>
+          <span>{occupation} occupation | </span>
+          <span>{age} age</span>
+        </p>
+      </div>
+    )
   }
-})
+}
 
 export default Recipes;
+
 
 

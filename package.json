@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "pouchdb": "^5.1.0",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.10",
-    "pouchdb": "^5.1.0"
-
+    "react-scripts": "1.0.10"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,31 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import PouchDB from 'pouchdb';
-import db from './index-pouch.js';
 
 const { createClass, PropTypes } = React
 const { render } = ReactDOM
 
-
-var notifs;
-
-db.get('mittens1').then(function (doc) {
-     notifs = doc;
-      console.log(notifs)
-      return notifs;
-
-    });
-
-console.log(notifs)
-
-var doc = {
-  "_id": "mittens2",
-  "name": "Mittens2",
-  "occupation": "kitten2",
-  "age": 32,
-};
-
-const Recipes = createClass({
+const Recipes = createClass({git
   displayName: "Recipes",
   propTypes: {
       ingredients: PropTypes.number,
@@ -35,7 +14,7 @@ const Recipes = createClass({
 
   getDefaultProps() {
       return {
-          ingredients: 0,
+          ingredients: array[0].key,
           steps: 0,
           title: "[untitled recipe]"
       }
@@ -55,12 +34,6 @@ const Recipes = createClass({
   }
 })
 
-
-
-
-
-
 export default Recipes;
-
 
 
