@@ -11,15 +11,22 @@ class Recipes extends Component {
         title: '',
         body: '',
         viewed: false,
-
       },
     };
   }
 
- componentDidMount() {
-    db.get('notif_1')
-        .then(doc => this.setState(() => ({ doc })))
-        .catch(err => console.log(err))
+  componentDidMount() {
+    db.allDocs({
+      include_docs: true,
+      attachments: true,
+      startkey: 'notif',
+      endkey: 'notif\ufff0'
+    })
+.then(function (result) {
+  console.log(result);
+}).catch(function (err) {
+  console.log(err);
+});  
 }
 
   render() {
