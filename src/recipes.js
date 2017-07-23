@@ -8,28 +8,28 @@ class Recipes extends Component {
     this.state = {
       doc: {
         _id: '',
-        name: '',
-        occupation: '',
-        age: null,
-      }
+        title: '',
+        body: '',
+        viewed: false,
+
+      },
     };
   }
 
-  componentDidMount() {
-    db.get('mittens1')
-      .then(doc => this.setState(() => ({ doc })))
-      .catch(err => console.log(err));
-  }
+ componentDidMount() {
+    db.get('notif_1')
+        .then(doc => this.setState(() => ({ doc })))
+        .catch(err => console.log(err))
+}
 
   render() {
-    const {_id, name, occupation, age} = this.state.doc;
+    const {_id, title, body } = this.state.doc;
     return (
       <div className="recipes">
         <h1>id {_id}</h1>
         <p>
-          <span>{name} name | </span>
-          <span>{occupation} occupation | </span>
-          <span>{age} age</span>
+          <span>{title} title | </span>
+          <span>{body} body</span>
         </p>
       </div>
     )
