@@ -1,68 +1,51 @@
 import React, { Component } from 'react';
 import db from './index-pouch.js';
 
-// function ListItem(props) {
-//   return <li>{props.value}</li>;
-// }
-
-// function NumberList(props) {
-//   const result = props.numbers;
-//   return (
-//     <ul>
-//       {result.map((number) =>
-//         <ListItem key={result.toString()}
-//                   value={result} />
-//       )}
-//     </ul>
-//   );
-// }
-
-
-
 class Recipes extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props)
 
-    this.state = {
-      result: [{
-        _id: '',
-        title: '',
-        body: '',
-        viewed: false,
-      }],
-    };
-  }
+        this.state = {
+            doc: {
+                _id: '',
+                title: '',
+                body: '',
+                viewed: false,
+            },
+        }
+    }
 
-  componentDidMount() {
-    db.allDocs({
-      include_docs: true,
-      attachments: true,
-      startkey: 'notif',
-      endkey: 'notif\ufff0'
-    })
-      .then(result => this.setState(() => ({ result })))
-      .then(function (result) {
-      console.log(result);
-    }).then(result => this.setState(() => ({ result })))
-      .catch(err => console.log(err))
+    componentDidMount() {
+        db.get('notif_1')
+            .then(doc => this.setState(() => ({ doc })))
+            .catch(err => console.log(err))
+    }
 
-  }
+    render() {
+        const {title, body} = this.state.doc
+         console.log("recipes render", this.state.doc)
+        return (
+            <div className='recipes'>
+                <h1> Notifications</h1>
 
-  render() {
-    const {_id, title, body } = this.state.result;
-    console.log()return (
-      <div className="recipes">
-        <h1>id {_id}</h1>
-        <p>
-          <span>{title} title | </span>
-          <span>{body} body</span>
-        </p>
-      </div>
-    )
-  }
+                <section>
+                    <h2>Click to mark as unread</h2>
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th> <span>{title}  </span> | {body}</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        )
+    }
 }
 
-export default Recipes;
+export default Recipes
 
 
 
