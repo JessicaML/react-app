@@ -2,7 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
 // import App from './App';
-import Recipes from './Recipes';
+// import Recipes from './Recipes';
+import NumberList from './numbers';
+
 // import db from './index-pouch.js';
 // import getNotifs from './export-prom.js';
 
@@ -21,8 +23,8 @@ import registerServiceWorker from './registerServiceWorker';
 registerServiceWorker();
 
 
-// ReactDOM.render(<App />, document.getElementById('root1'));
+render(<NumberList />, document.getElementById('root1'));
 
-render(<Recipes />, document.getElementById('root3'));
+// render(<Recipes />, document.getElementById('root3'));
 
 // ReactDOM.render(<Json source={doc.occupation} />, document.getElementById('root4'));

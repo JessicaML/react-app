@@ -1,17 +1,35 @@
 import React, { Component } from 'react';
 import db from './index-pouch.js';
 
+// function ListItem(props) {
+//   return <li>{props.value}</li>;
+// }
+
+// function NumberList(props) {
+//   const result = props.numbers;
+//   return (
+//     <ul>
+//       {result.map((number) =>
+//         <ListItem key={result.toString()}
+//                   value={result} />
+//       )}
+//     </ul>
+//   );
+// }
+
+
+
 class Recipes extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      doc: {
+      result: [{
         _id: '',
         title: '',
         body: '',
         viewed: false,
-      },
+      }],
     };
   }
 
@@ -22,16 +40,17 @@ class Recipes extends Component {
       startkey: 'notif',
       endkey: 'notif\ufff0'
     })
-.then(function (result) {
-  console.log(result);
-}).catch(function (err) {
-  console.log(err);
-});  
-}
+      .then(result => this.setState(() => ({ result })))
+      .then(function (result) {
+      console.log(result);
+    }).then(result => this.setState(() => ({ result })))
+      .catch(err => console.log(err))
+
+  }
 
   render() {
-    const {_id, title, body } = this.state.doc;
-    return (
+    const {_id, title, body } = this.state.result;
+    console.log()return (
       <div className="recipes">
         <h1>id {_id}</h1>
         <p>
