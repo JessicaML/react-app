@@ -24,11 +24,19 @@ class Notification extends Component {
         //const notifs{title, body} = this.state.results
          const notifs = this.state.results
          const notif = JSON.stringify(notifs.rows)
-
+         var revs =[];
+         var docs =[];
          console.log("numbers render", this.state.results)
-         // console.log(notifs.rows)
-         console.log("work1?", notifs.rows)
-         console.log("work?", notifs[0])
+         var obj = notifs.rows;
+         for(var prop in obj) {
+            console.log (obj, prop, obj[prop].value.rev)
+            revs.push (obj[prop].value.rev)
+            docs.push (obj[prop].doc)
+   
+        }
+
+         console.log("Revs", revs);
+         console.log("Docs", docs);
 
         return (            
             <div>
