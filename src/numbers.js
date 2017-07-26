@@ -2,23 +2,11 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import db from './index-pouch.js';
 
-function ListItem(props) {
-  return <li>{props.value}</li>;
-}
-
-class NumberList extends Component {
+class Notification extends Component {
     constructor(props) {
         super(props)
     
-        this.state = {
-                results: {
-                  _id: '',
-                  title: '',
-                  body: '',
-                  viewed: false,
-                },
-                loading: true
-            };
+        this.state = { results: {} };
     }
 
       componentDidMount() {
@@ -30,21 +18,25 @@ class NumberList extends Component {
       })
         .then(results => this.setState(() => ({ results })))
         .catch(err => console.log(err))  
-}
-
+      }
 
     render() {
-        const {title, body} = this.state.results
+        //const notifs{title, body} = this.state.results
+         const notifs = this.state.results
+         const notif = JSON.stringify(notifs.rows)
+
          console.log("numbers render", this.state.results)
-            return (
-                <div>
-                      <div>
-                        <h2>aerwqrt{title}</h2>
-                      </div>  
-                                     
-                </div>
-              )}
-            }
+         // console.log(notifs.rows)
+         console.log("work1?", notifs.rows)
+         console.log("work?", notifs[0])
 
+        return (            
+            <div>
+               {notif}
+            </div>
+        );
+    }
 
-export default NumberList;
+}
+
+export default Notification;
