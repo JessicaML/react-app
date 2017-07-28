@@ -22,7 +22,7 @@ class Notification extends Component {
           _rev: doc._rev,
           title: doc.title,
           body: doc.body,
-          viewed: true
+          viewed: true,
         });
       }).then(function(response) {
         // handle response
