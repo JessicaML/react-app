@@ -16,5 +16,19 @@ db.put({
     "viewed": false,
 })
 
+db.put({
+    "_id": "notif_3",
+    "title": "Jess is fabulous",
+    "body": "And she is 2 legit 2 quit.",
+    "viewed": false,
+})
+
+db.put({
+    "_id": "notif_4",
+    "title": "Vanessa is a badass",
+    "body": "Canadianzrule.",
+    "viewed": false,
+})
+
 export default db
 
