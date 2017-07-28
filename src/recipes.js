@@ -23,7 +23,7 @@ class Recipes extends Component {
 
     render() {
         const {title, body} = this.state.doc
-         console.log("recipes render", this.state.doc)
+        console.log("recipes render", doc)
         return (
             <div className='recipes'>
                 <h1> Notifications</h1>

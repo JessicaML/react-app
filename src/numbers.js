@@ -2,7 +2,20 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import db from './index-pouch.js';
 
-const ListItem = ({ title, body }) => <li>{title}: <span>{body}</span></li>;
+
+class Child extends React.Component {
+  render() {
+    const { notifs } = this.state;
+    return (
+            <div>
+               {notifs.rows && 
+                notifs.rows.map(({ doc }) => (
+                  <h2>{doc.title}</h2>
+               ))}
+            </div>
+        );
+  }
+}
 
 class Notification extends Component {
     constructor(props) {
@@ -23,24 +36,31 @@ class Notification extends Component {
       }
 
     render() {
-        //const notifs{title, body} = this.state.results
          const { notifs } = this.state;
          const notif = JSON.stringify(notifs.rows)
 
-         console.log("numbers render", notifs)
-         // console.log(notifs.rows)
-         console.log("work1?", notifs.rows && notifs.rows[0])
-         console.log("work?", notif)
-         console.log(Array.isArray(notifs.rows))
-
-        return (            
-            <ul>
-               {notifs.rows && 
-                notifs.rows.map(({ id, doc }) => <ListItem key={id} {...doc} />)}
-            </ul>
+        return ( 
+            <div>           
+                <div onClick={() => this.onClick()}>
+                   {notifs.rows && 
+                    notifs.rows.map(({ doc }) => (
+                      <h2>{doc.title}</h2>
+                   ))}
+                </div>
+                {
+                this.state.childVisible
+                ? <Child />
+                : null
+                }
+            </div>    
         );
     }
 
+    onClick() {
+        this.setState({childVisible: !this.state.childVisible});
+    }
 }
+
+
 
 export default Notification;
