@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import db from "./index-pouch.js";
 import styles from "./index.css";
-import setUnread from "./setUnread.js";
-
-
+import setUnreadCount from "./setUnreadCount.js";
 
 class Notification extends Component {
 
@@ -18,8 +16,6 @@ class Notification extends Component {
     db
       .get(doc._id)
       .then(function(doc) {
-        // selected notification,
-        // set the notif doc viewed key to 'true'
         return db.put({
           _id: doc._id,
           _rev: doc._rev,
@@ -28,16 +24,15 @@ class Notification extends Component {
           viewed: true
         });
       })
-      .then(function(response) {
-        // count the number of unread notifs and update the notif badge
-        
-        let unreadItemCount = 0;
-        
-        console.log('seturead numbers.js', setUnread(unreadItemCount));
+     .then(function(response) {
+      console.log("before", itemToCount)
 
+      let itemToCount = setUnreadCount(0);
+      console.log("after", itemToCount)
       })
+
       .catch(function(err) {
-        console.log("err");
+        console.log(err);
       });
   }
   componentDidMount() {
