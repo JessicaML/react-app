@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import db from "./index-pouch.js";
 import styles from "./index.css";
 import setUnreadCount from "./setUnreadCount.js";
 
 class Notification extends Component {
-
   constructor(props) {
     super(props);
     this.state = { notifs: {}, selectedNotificationId: -1 };
@@ -15,28 +13,30 @@ class Notification extends Component {
     this.setState({ selectedNotificationId: doc._id });
     db
       .get(doc._id)
-      .then(function(doc) {
-        return db.put({
-          _id: doc._id,
-          _rev: doc._rev,
-          title: doc.title,
-          body: doc.body,
-          viewed: true
-        });
-      })
-     .then(function(response) {
-      console.log("before", itemToCount)
+      .then(doc => db.put({
+        ...doc,
+        viewed: true
+      }))
+      .then(function(response) {
+        // console.log("before", itemToCount);
 
-      let itemToCount = setUnreadCount(0);
-      console.log("after", itemToCount)
-      })
+        // let itemToCount = 0;
 
+        const itemToCount = setUnreadCount(0).then(count => count);
+        // function iExecuteYourCallback(setUnreadCount) {
+        //   itemToCount = setUnreadCount(0).then(console.log);
+        // }
+        // iExecuteYourCallback(function() {
+        //   // console.log("Im a callback function!", setUnreadCount(0));
+        // });
+      })
       .catch(function(err) {
-        console.log(err);
+        console.log("err", err);
       });
   }
   componentDidMount() {
-    db.allDocs({
+    db
+      .allDocs({
         include_docs: true,
         attachments: true,
         startkey: "notif",
@@ -54,30 +54,17 @@ class Notification extends Component {
         {notifs.rows &&
           notifs.rows.map(({ doc }) =>
 
-          // var Button = React.createClass({
-          //   // ... 
-          //   render () {
-          //     var btnClass = 'btn';
-          //     if (this.state.isPressed) btnClass += ' btn-pressed';
-          //     else if (this.state.isHovered) btnClass += ' btn-over';
-          //     return <button className={btnClass}>{this.props.label}</button>;
-          //   }
-          // });
 
+            // if doc.viewed === true, add classname='viewed' to li
 
-          // if doc.viewed === true, add classname='viewed' to li
+            //     if (doc.viewed) liClass += {styles.viewed};
+            //     else if (doc.viewed === false) liClass += {styles.not-viewed};
+            //   }
+            // });
 
-          //     if (doc.viewed === true) liClass += {styles.viewed};
-          //     else if (doc.viewed === false) liClass += {styles.notViewed};
-          //     return <button className={liClass}>{this.props.label}</button>;
-          //   }
-          // });
-
-
-
-            <div onClick={() => this.selectNotification(doc)}>
+            <div onClick={() => this.selectNotification(doc)} className={doc.viewed ? 'viewed' : 'not-viewed'}>
               {doc.title}
-              {this.state.selectedNotificationId == doc._id &&
+              {this.state.selectedNotificationId === doc._id &&
                 <div>
                   {doc.body}
                 </div>}

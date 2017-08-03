@@ -8,3 +8,22 @@ div .body {
 	display: none;
 	background-color: blue;
 }
+
+.viewed{
+    background-color: red;
+    margin: 5px;
+    padding: 5px;
+    list-style: none;
+    color: #fff;
+    font-weight: 300;
+}
+
+
+.not-viewed{
+    background-color: blue;
+    margin: 5px;
+    padding: 5px;
+    list-style: none;
+    color: #fff;
+    font-weight: 900;
+}
