@@ -2,7 +2,7 @@ import db from "./index-pouch.js";
 import PouchDB from "pouchdb";
 
 export default function setUnreadCount(itemToCount) {
-    // console.log(itemToCount);
+    console.log(itemToCount);
    
     return db
         .allDocs({
@@ -20,15 +20,16 @@ export default function setUnreadCount(itemToCount) {
             // loop through them, if viewed is set to true, add to unread notifs counter
 
             viewedNotifs.forEach(function(element) {
-                console.log(element.doc.viewed);
+                // console.log(element.doc.viewed);
                 if (element.doc.viewed === true) {
                     itemToCount = itemToCount + 1;
                 }
-                console.log("inside foreach", itemToCount);
+                // console.log("inside foreach", itemToCount);
 
+                return itemToCount;
             });
 
-            console.log("outside foreach", itemToCount);
+            // console.log("outside foreach", itemToCount);
 
             return itemToCount;
         })

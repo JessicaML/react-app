@@ -16,3 +16,4 @@ export default function setUnreadCount(itemToCount) {
             console.log("err", err);
         });
 }
+

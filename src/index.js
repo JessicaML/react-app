@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
-// import ShowHide from './hide';
+import script from './create-pouch';
 import Notification from './numbers';
 
 import registerServiceWorker from './registerServiceWorker';
@@ -13,4 +13,4 @@ registerServiceWorker();
 
 render(<Notification />, document.getElementById('root1'));
 
-// render(<ShowHide />, document.getElementById('root3'));
+render(<script />, document.getElementById('root3'));

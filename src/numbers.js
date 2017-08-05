@@ -18,17 +18,9 @@ class Notification extends Component {
         viewed: true
       }))
       .then(function(response) {
-        // console.log("before", itemToCount);
 
-        // let itemToCount = 0;
+        const itemToCount = setUnreadCount(0).then(console.log);
 
-        const itemToCount = setUnreadCount(0).then(count => count);
-        // function iExecuteYourCallback(setUnreadCount) {
-        //   itemToCount = setUnreadCount(0).then(console.log);
-        // }
-        // iExecuteYourCallback(function() {
-        //   // console.log("Im a callback function!", setUnreadCount(0));
-        // });
       })
       .catch(function(err) {
         console.log("err", err);
