@@ -25,12 +25,6 @@
 
 //
 
-var myHeaders = new Headers();
-
-var myInit = { method: 'GET',
-               headers: myHeaders,
-               mode: 'no-cors',
-               cache: 'default' };
 
 let url = 'https://codepen.io/jobs.json';
 
@@ -40,18 +34,6 @@ fetch(url)
   console.log('Checkout this JSON! ', out);
 })
 .catch(err => console.error(err));
-
-
-
-var myRequest = new Request(url, myInit);
-
-fetch(myRequest).then(function(response) {
-  return response.blob();
-}).then(function(myBlob) {
-  // var objectURL = URL.createObjectURL(myBlob);
-  // myImage.src = objectURL;
-  console.log('Checkout this JSON! ', myBlob);
-});
 
 
 
