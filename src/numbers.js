@@ -46,14 +46,6 @@ class Notification extends Component {
         {notifs.rows &&
           notifs.rows.map(({ doc }) =>
 
-
-            // if doc.viewed === true, add classname='viewed' to li
-
-            //     if (doc.viewed) liClass += {styles.viewed};
-            //     else if (doc.viewed === false) liClass += {styles.not-viewed};
-            //   }
-            // });
-
             <div onClick={() => this.selectNotification(doc)} className={doc.viewed ? 'viewed' : 'not-viewed'}>
               {doc.title}
               {this.state.selectedNotificationId === doc._id &&

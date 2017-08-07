@@ -1,5 +1,6 @@
 import db from "./index-pouch.js";
-import PouchDB from "pouchdb";
+var PouchDB = require('pouchdb');
+PouchDB.plugin(require('pouchdb-find'));
 
 export default function setUnreadCount(itemToCount) {
     // console.log(itemToCount);

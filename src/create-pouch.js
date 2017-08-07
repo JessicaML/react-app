@@ -1,40 +1,23 @@
-//fetch data from mongo
+import db from "./index-pouch.js";
 
-// var script = document.createElement('script');
-// // assing src with callback name
-// script.src = 'https://superintendant-weather-30201.bitballoon.com/notifications.json';
+var PouchDB = require('pouchdb');
+PouchDB.plugin(require('pouchdb-upsert'));
 
-// console.log(script)
+let url = "https://codepen.io/jobs.json";
+
+fetch(url)
+    .then(res => res.json())
+    .then(out => {
+        db.upsert({
+            "_id": "notif_" + "22",
+            "title": out.jobs[2].title,
+            "body": out.jobs[2].description,
+            "viewed": false,
+        })
+        //     mongoout.filter(arr1Item => !notifs.includes(outItem)); // `[4]`
+    })
+    .catch(err => console.error(err));
 
 //set timeout (every 60 mins?)
 
-// compare mongo data with pouch data
-
-//if there is a new mongo db doc, create a new corresponding pouch doc
-
-// give it an id with "notifs_xxx"
-
-// var myRequest = new Request('flowers.jpg', myInit);
-
-// fetch(myRequest).then(function(response) {
-//   return response.blob();
-// }).then(function(myBlob) {
-//   var objectURL = URL.createObjectURL(myBlob);
-//   myImage.src = objectURL;
-// });
-
-//
-
-
-let url = 'https://codepen.io/jobs.json';
-
-fetch(url)
-.then(res => res.json())
-.then((out) => {
-  console.log('Checkout this JSON! ', out);
-})
-.catch(err => console.error(err));
-
-
-
-export default url
+export default url;

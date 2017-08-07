@@ -5,6 +5,7 @@
   "dependencies": {
     "pouchdb": "^5.1.0",
     "pouchdb-find": "^6.3.4",
+    "pouchdb-upsert": "^2.2.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
