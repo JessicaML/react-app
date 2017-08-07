@@ -2,9 +2,7 @@ import db from "./index-pouch.js";
 import PouchDB from "pouchdb";
 
 let url = "https://codepen.io/jobs.json";
-
-function grabArrays(url) {
-	//fetch data from mongo
+			console.log("Cvhjgkl ");
 
 	fetch(url)
 		.then(res => res.json())
@@ -19,14 +17,9 @@ function grabArrays(url) {
 				endkey: "notif\ufff0"
 			});
 
-			out.filter(arr1Item => !notifs.includes(outItem)); // `[4]`
 
 		})
-		.then( => {
-		})
-		.catch(err => console.error(err));
-
-	//fetch data from pouch
+		.catch(err => console.error("err", err));
 	db
 		.allDocs({
 			include_docs: true,
@@ -38,29 +31,26 @@ function grabArrays(url) {
 			console.log("Checkout this! ", notifs);
 			return notifs;
 		})
-		.catch(err => console.log(err));
+		.catch(err => console.log("err", err));
 
-	// compare mongo data with pouch data
-	// console.log('?????', notifs,  out);
-}
 
-const itemToCount = grabArrays().then(console.log);
 
-// if any mongo docs have an id number that is NOT found in
-// pouch docs with notifs_ in id, then create a new pouch doc
-
-arr1.filter(arr1Item => !arr2.includes(arr1Item)); // `[4]`
-
-// give it an id with "notifs_xxx"
-
-// db.put({
-//     "_id": "notif_" + whatev,
-//     "mongo_id": newNote.id,
-//     "title": newNote.title,
-//     "body": newNote.body,
-//     "viewed": false,
-// })
-
-//set timeout (every 60 mins?)
+// const itemToCount = grabArrays(url).then(console.log);
 
 export default url;
+
+// get JSON data
+
+// get notifs
+
+// => IMPORT FROM EXT. MODULES 
+
+// compare arrays
+
+// return 
+
+
+// insert to pouch
+
+// id shit
+
