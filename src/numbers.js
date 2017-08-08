@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import db from "./index-pouch.js";
 import styles from "./index.css";
 import setUnreadCount from "./setUnreadCount.js";
+import createNewPouchNotif from './polling/createNewPouchNotif'
 
 class Notification extends Component {
   constructor(props) {
@@ -20,6 +21,8 @@ class Notification extends Component {
       .then(function(response) {
 
         const itemToCount = setUnreadCount(0).then(console.log);
+        const pouchs = createNewPouchNotif(0).then(console.log);
+
 
       })
       .catch(function(err) {

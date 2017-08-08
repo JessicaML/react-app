@@ -62,8 +62,8 @@ var b = [{
 function url(otherArray) {
     return function(current) {
         return otherArray.filter(function(other) {
-            console.log(other._id)
-            return other._id == current._id && other.display == current.display
+            return other._id == current._id 
+
         }).length == 0;
     }
 }
@@ -78,16 +78,16 @@ console.log("res id", result._id);
 
 
 
-db.put({
-    // "_id": result._id,
-    "title": result.title,
-    "body": result.body,
-    "viewed": false,
-}).then(function(response) {
-    console.log("response posted new pouch", response)
-}).catch(function(err) {
-    console.log(err);
-});
+// db.put({
+//     // "_id": result._id,
+//     "title": result.title,
+//     "body": result.body,
+//     "viewed": false,
+// }).then(function(response) {
+//     console.log("response posted new pouch", response)
+// }).catch(function(err) {
+//     console.log(err);
+// });
 
 
 
