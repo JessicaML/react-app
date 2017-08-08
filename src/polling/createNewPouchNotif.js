@@ -19,23 +19,24 @@ export default function createNewPouchNotif(itemToCount) {
    .then(res => {
         console.log("does this run 2?");
      // const diff = returnDiffArrays(res,res).then(console.log);
-
-        // const jsonData = fetchNewNotifs(0).then(console.log);
+        // console.log(res.rows[0])
+        const jsonData = fetchNewNotifs(0).then(console.log);
+        console.log("jsonData", jsonData)
         // returnDiffArrays(res, jsonData); 
-        console.log("returnDiffArrays");
-        console.log('fetchNewNotifs');
+        // console.log("returnDiffArrays");
+        // console.log('fetchNewNotifs', );
 })
       // compare 2 arrays
 
       //insert to pouch
-   .then(notif => {
-        db.upsert({
-            "_id": "notif_" + "22",
-            "title": notif.title,
-            "body": notif.description,
-            "viewed": false,
-        })      
-})
+//    .then(notif => {
+//         db.upsert({
+//             "_id": "notif_" + "22",
+//             "title": notif.title,
+//             "body": notif.description,
+//             "viewed": false,
+//         })      
+// })
         .catch(err => console.log(err));
 
 // compare 2 arrays
