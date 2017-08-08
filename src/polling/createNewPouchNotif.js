@@ -20,8 +20,10 @@ export default function createNewPouchNotif(itemToCount) {
         console.log("does this run 2?");
      // const diff = returnDiffArrays(res,res).then(console.log);
         // console.log(res.rows[0])
-        const jsonData = fetchNewNotifs(0).then(console.log);
-        console.log("jsonData", jsonData)
+                console.log(" or here");
+
+        const jsonData = fetchNewNotifs().then(console.log);
+        // console.log("jsonData", jsonData)
         // returnDiffArrays(res, jsonData); 
         // console.log("returnDiffArrays");
         // console.log('fetchNewNotifs', );

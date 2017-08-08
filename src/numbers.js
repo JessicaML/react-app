@@ -21,6 +21,7 @@ class Notification extends Component {
       .then(function(response) {
 
         const itemToCount = setUnreadCount(0).then(console.log);
+        console.log("here");
         const pouchs = createNewPouchNotif(0).then(console.log);
 
 
