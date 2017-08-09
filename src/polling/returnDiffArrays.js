@@ -1,18 +1,27 @@
 export default function returnDiffArrays(a1, a2) {
-
-  // var a2 = [1,2, 3]
-  // var a1 = [1,2, 3, 4]
-
-    var result = [];
-    for (var i = 0; i < a1.length; i++) {
-        if (a2.indexOf(a1[i]) === -1) {
-            result.push(a1[i]);
+// let pouchDoc = a2.doc 
+    function url(otherArray) {
+        return function(current) {
+            console.log("current.doc", current.doc)
+            let pouchDoc = current.doc;
+            return otherArray.filter(function(other, pouchDoc) {
+                // console.log("other.title", other.title)
+                console.log("pouchDoc", current.doc)
+                
+                return other.title == current.title
+            }).length == 0;
         }
     }
-    console.log("does this work mate?", result)
+
+    var onlyInA = a1.filter(url(a2));
+    var onlyInB = a2.filter(url(a1));
+
+    var result = onlyInA.concat(onlyInB);
+
+    // console.log("result is", result);
+    // console.log("res title", result[0].title);
     return result;
+
 }
-
-
 
 

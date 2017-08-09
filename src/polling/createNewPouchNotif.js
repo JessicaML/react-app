@@ -1,7 +1,7 @@
 import returnDiffArrays from './returnDiffArrays'
 import fetchNewNotifs from './fetchNewNotifs'
 import db from "../index-pouch.js";
-var PouchDB = require('pouchdb');
+const PouchDB = require('pouchdb');
 PouchDB.plugin(require('pouchdb-upsert'));
 
 
@@ -20,13 +20,15 @@ export default function createNewPouchNotif(itemToCount) {
         .then(res => {
             const jsonData = fetchNewNotifs()
                 .then(jsonData => {
-                    return returnDiffArrays(jsonData.jobs, res.rows) 
+                    console.log(jsonData.jobs, res.rows)
+                    let pouchNotifs = res.rows
+                    return returnDiffArrays(jsonData.jobs, pouchNotifs) 
                 }).then(res => {
                     console.log("jsondata", res)
                     db.put({
-                        "_id": "notif_" + "26",
-                        "title": res[0].title,
-                        "body": res[0].description,
+                        "_id": "notif_" + "27",
+                        "title": res[1].title,
+                        "body": res[1].description,
                         "viewed": false,
                     })
                 }).catch(err => console.log(err));
