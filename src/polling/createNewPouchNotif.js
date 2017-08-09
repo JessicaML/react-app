@@ -15,19 +15,29 @@ export default function createNewPouchNotif(itemToCount) {
             startkey: "notif",
             endkey: "notif\ufff0"
         })
-        // get JSON data
+        // get JSON dataz
         .then(res => {
-            console.log("does this run 2?", res);
+            console.log("pouch notifs:", res);
             // console.log(res.rows[0])
-            console.log(" or here", );
-
             const jsonData = fetchNewNotifs()
-                .then(res => {
-                    console.log("bah", res)
-                    console.log("bah", jsonData)
+                .then(jsonData => {
+                    console.log("bah res", res.rows)
+                    let pouchNotifs = res.rows
+                    console.log("bah jsonData", jsonData.jobs)
+                    let mongoNotifs = jsonData.jobs
+                    console.log("a", mongoNotifs)
+                    console.log("b", pouchNotifs)
+
+                    const diff = returnDiffArrays(pouchNotifs, mongoNotifs).then(console.log);
+
+                    // res["rows2"] = jsonData;
+                }).then(res => {
+                    console.log("jsondata", res)
+                    // }).then(res => {
 
 
-                    const diff = returnDiffArrays([1,2,3],[1,2,3,4]).then(console.log);
+                    // push jsonData onto 
+                    // const diff = returnDiffArrays([1,2,3,4], [1,2,3]).then(console.log);
                 }).catch(err => console.log(err));
             // console.log("jsonData", jsonData)
             // returnDiffArrays(res, jsonData); 
