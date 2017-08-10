@@ -1,3 +1,8 @@
+ import db from "../index-pouch.js";
+const PouchDB = require('pouchdb');
+PouchDB.plugin(require('pouchdb-upsert'));
+
+
 export default function fetchNewNotifs() {
 
     // let INTERVAL_IN_MS = 1000; // wait 1 second
@@ -8,11 +13,18 @@ export default function fetchNewNotifs() {
 
         fetch(url)
             .then(res => res.json())
-            .then(out => {
+            .then(res => {
                 console.log("What's crackin'?")
-                console.log(out)
+                console.log(res)
                 // return out
-            })
-            .catch(err => console.error("err", err));
+            }).then(res => {
+                             db.putIfNotExists({
+                        "_id": "notif_" + "33",
+                        "MongoId": res[0].hashid,
+                        "title": res[0].title,
+                        "body": res[0].description,
+                        "viewed": false,
+                    })
+            }).catch(err => console.error("err", err));
     }, 5000);
 }

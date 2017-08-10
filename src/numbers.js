@@ -4,6 +4,8 @@ import styles from "./index.css";
 import setUnreadCount from "./setUnreadCount.js";
 import fetchNewNotifs from './polling/fetchNewNotifs'
 
+fetchNewNotifs();
+
 class Notification extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,7 @@ class Notification extends Component {
 
         const itemToCount = setUnreadCount(0).then(console.log);
         console.log("here");
-        const pouchs = fetchNewNotifs(0);
+        // const pouchs = fetchNewNotifs(0);
 
 
       })
