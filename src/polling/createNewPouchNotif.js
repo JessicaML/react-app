@@ -5,8 +5,6 @@ const PouchDB = require('pouchdb');
 PouchDB.plugin(require('pouchdb-upsert'));
 
 
-// get pouch data
-// console.log('inside create pouch', fetchNewNotifs())
 export default function createNewPouchNotif(itemToCount) {
     console.log("does this run?");
 
@@ -25,15 +23,15 @@ export default function createNewPouchNotif(itemToCount) {
                     return returnDiffArrays(jsonData.jobs, pouchNotifs) 
                 }).then(res => {
                     console.log("jsondata", res)
-                    console.log("jsondata", res[1].title)
+                    console.log("jsondata", res[0].title)
                     db.putIfNotExists({
-                        "_id": "notif_" + res[1].hashid,
-                        "title": res[1].title,
-                        "body": res[1].description,
+                        "_id": "notif_" + res[0].hashid,
+                        "MongoId": res[0].hashid,
+                        "title": res[0].title,
+                        "body": res[0].description,
                         "viewed": false,
                     })
                 }).catch(err => console.log(err));
         })
-    // compare 2 arrays
 
 }
