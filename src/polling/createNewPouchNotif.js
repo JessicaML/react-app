@@ -25,8 +25,9 @@ export default function createNewPouchNotif(itemToCount) {
                     return returnDiffArrays(jsonData.jobs, pouchNotifs) 
                 }).then(res => {
                     console.log("jsondata", res)
-                    db.put({
-                        "_id": "notif_" + "27",
+                    console.log("jsondata", res[1].title)
+                    db.putIfNotExists({
+                        "_id": "notif_" + res[1].hashid,
                         "title": res[1].title,
                         "body": res[1].description,
                         "viewed": false,
